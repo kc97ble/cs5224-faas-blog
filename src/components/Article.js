@@ -1,11 +1,18 @@
 import React from 'react';
 
-function Article() {
-  return (
-    <div>
-      Article
-    </div>
-  );
+class Article extends React.Component {
+  state = {
+    errorMsg: "",
+    title: "",
+    body: ""
+  }
+
+  render() {
+    return <pre>
+      {JSON.stringify(this.state, null, 4)}
+      {JSON.stringify(this.props, null, 4)}
+    </pre>;
+  }
 }
 
 export default Article;
