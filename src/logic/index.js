@@ -1,14 +1,10 @@
-function getAllArticles(callback) {
-  console.log(callback);
-  
-  const result = {
-    msg: "OK",
-    items: [
-      { id: 1, title: "First article" },
-      { id: 2, title: "Second article" },
-    ],
-  };
-  callback(result);
+const apiUrl = "https://3xnri7bq8i.execute-api.ap-southeast-1.amazonaws.com/dev"
+
+async function getAllArticles() {
+  const response = await fetch(apiUrl+"/article");
+  const data = await response.json();
+  console.log(data);
+  return data;
 }
 
 export { getAllArticles };

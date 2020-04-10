@@ -3,23 +3,17 @@ import { getAllArticles } from "../logic";
 
 class Home extends React.Component {
   state = {
-    errorMsg: "",
-    articles: []
-  }
+    errorMessage: "",
+    articles: [],
+  };
 
-  componentDidMount() {
-    getAllArticles(({ msg, items }) => {
-      this.setState({
-        errorMsg: msg,
-        articles: items
-      })
-    })
+  async componentDidMount() {
+    const { errorMessage, articles } = await getAllArticles();
+    this.setState({ errorMessage, articles });
   }
 
   render() {
-    return <pre>
-      {JSON.stringify(this.state, null, 4)}
-    </pre>;
+    return <pre>{JSON.stringify(this.state, null, 4)}</pre>;
   }
 }
 
