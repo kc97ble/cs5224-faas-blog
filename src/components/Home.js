@@ -13,7 +13,17 @@ class Home extends React.Component {
   }
 
   render() {
-    return <pre>{JSON.stringify(this.state, null, 4)}</pre>;
+    // return <pre>{JSON.stringify(this.state, null, 4)}</pre>;
+    return (
+      <div>
+        <h1>Article list</h1>
+        {this.state.articles.map(({ id, title }) => 
+          <p>
+            <a href={"article/"+id}>{title}</a>
+          </p>
+        )}
+      </div>
+    );
   }
 }
 
