@@ -1,7 +1,5 @@
 const apiUrl =
   "https://3xnri7bq8i.execute-api.ap-southeast-1.amazonaws.com/dev";
-const origin =
-  "http://cs5224-lab2-part3.s3-website-ap-southeast-1.amazonaws.com/";
 
 async function getAllArticles() {
   const response = await fetch(apiUrl + "/article");
@@ -15,5 +13,21 @@ async function getArticle(id) {
   return data;
 }
 
+async function deleteArticle(id) {
+  const response = await fetch(apiUrl + "/article/" + id.toString(), {
+    method: "DELETE",
+  });
+  const data = await response.json();
+  return data;
+}
 
-export { getAllArticles, getArticle };
+async function createArticle(title, body) {
+  const response = await fetch(apiUrl + "/article/", {
+    method: "POST",
+    body: JSON.stringify({title, body})
+  });
+  const data = await response.json();
+  return data;
+}
+
+export { getAllArticles, getArticle, deleteArticle, createArticle };
